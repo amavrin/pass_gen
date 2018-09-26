@@ -7,6 +7,7 @@ class PasgenTest : public CxxTest::TestSuite {
 
 public:
 
+// проверим, что символы берутся из нужных диапазонов
 void testCanGetRandomChar() {
 	PasGen pass(1);
 	std::cout << std::endl;
@@ -23,6 +24,7 @@ void testCanGetRandomChar() {
 	std::cout << std::endl;
 }
 
+// проверим, что пароль генерируется нужной длины
 void testCanGetSomePassAndLenIsCorrect() {
 	int plen = 8;
 	PasGen pass(plen);
@@ -32,11 +34,13 @@ void testCanGetSomePassAndLenIsCorrect() {
 	TS_ASSERT_EQUALS(strlen(buf), plen);
 }
 
+// проверим, что количество символов в словаре равен ожидаемому
 void testCorrentDictLen() {
 	PasGen pass(1);
 	TS_ASSERT_EQUALS(pass.get_dlen(), 26+26+10+7);
 }
 
+// проверим, что мы можем менять длину пароля
 void testCanSetPassLen() {
 	PasGen pass(1);
 	int plen = 8;
@@ -47,6 +51,7 @@ void testCanSetPassLen() {
 	TS_ASSERT_EQUALS(strlen(buf), plen);
 }
 
+// очень грубая оценка, что символы генерируются случайным образом
 void testRandomIsQuiteRandom() {
 	PasGen pass(1);
 	int a_count = 0;
